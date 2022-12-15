@@ -1,1 +1,36 @@
 {% extends "base/base.html" %}
+
+{% block content %}
+<h1>Registration</h1>
+<form>
+  <div class="mb-3">
+    <label for="login" class="form-label">Login</label>
+    <input type="text" class="form-control" id="login">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="mb-3">
+    <label for="nickname" class="form-label">NickName</label>
+    <input type="text" class="form-control" id="nickname">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password">
+  </div>
+  <div class="mb-3">
+    <label for="repeat-password" class="form-label">Repeat password</label>
+    <input type="password" class="form-control" id="repeat-password">
+  </div>
+          
+  <div class="input-group">
+    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+  </div>
+
+  <div class="mb-3">
+    <input type="submit" class="form-control btn btn-primary" id="submit" value="Register">
+  </div>
+  
+</form>
+{% endblock %}
