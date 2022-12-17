@@ -1,8 +1,22 @@
 {% extends "base/base.html" %}
 
+{% load static %}
+
 {% block authorized %}
-<div class="navbar-nav position-absolute end-0">
-    <a class="nav-link link-primary" href="#">settings</a>
-    <a class="nav-link link-primary" href="#">log out</a>
+<div class="container col-3">
+  <div class="row">
+    <a class="col position-relative" href="#">
+      <img class="position-absolute end-0" src="{% static 'img/logo2.png' %}" alt="nickname" width="50" height="50">
+    </a>
+    <div class="col">
+      <div class="row">
+        <span>{{ nickname }}</span>
+      </div>
+      <div class="row">
+        <a class="col" href="#">settings</a>
+        <a class="col" href="#">log out</a>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
