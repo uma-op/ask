@@ -17,11 +17,13 @@ class Error:
 
 def signup(request: HttpRequest) -> HttpResponse:
     template = loader.get_template("signup/signup.html")
-    context = { "nickname": "Uma_op", "error": Error(1, "cringe")}
+    context = { "nickname": "Uma_op", "error": Error(1, "some signing up error")}
     return HttpResponse(template.render(context, request))
 
 def signin(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("not implemented")
+    template = loader.get_template("signin/signin.html")
+    context = { "error": Error(1, "some signing in error") }
+    return HttpResponse(template.render(context, request))
 
 def questions(request: HttpRequest) -> HttpResponse:
     template = loader.get_template("questions/")
@@ -38,5 +40,5 @@ def tag(request: HttpRequest, tag_name: str) -> HttpResponse:
 
 def settings(request: HttpRequest) -> HttpResponse:
     template = loader.get_template("settings/settings.html")
-    context = { "nickname": "Uma_op" }
+    context = { "nickname": "Uma_op", "error": Error(1, "some settings troubles") }
     return HttpResponse(template.render(context, request))
