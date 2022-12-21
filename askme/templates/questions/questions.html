@@ -1,7 +1,60 @@
 {% extends "base/base.html" %}
 
+{% load static %}
+
 {% block content %}
 <div class="container">
-
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col">
+      <h1>Questions</h1>
+    </div>
+  </div>
+  {% if questions_list|length == 0 %}
+  <div class="row">
+    No questions
+  </div>
+  {% else %}
+    {% for question in questions_list %}
+      <div class="row">
+        <div class="col m-2 border border-3">
+          <div class="row">
+            <div class="col-2">
+              <div class="row mt-3">
+                <div class="col d-flex justify-content-center">
+                  <img src="{% static "img/logo2.png" %}" height="50" width="50">
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col d-flex justify-content-center align-items-center">
+                  <span>10</span>
+                </div>
+                <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <a href="#">bump</a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <a href="#">sage</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row m-3">
+                <a href="#" class="fs-4">{{ question.theme }}</a>
+              </div>
+              <div class="row m-3">
+                <span>{{ question.text }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
 </div>
 {% endblock %}

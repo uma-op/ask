@@ -6,12 +6,12 @@
 <div class="container col-3">
   <div class="row">
     <a class="col-3 btn btn-primary btn-sm d-flex align-items-center justify-content-center m-2 p-0" href="/ask"> ASK! </a>
-    <a class="col-3 position-relative" href="#">
+    <a class="col-3 position-relative" href="/settings">
       <img class="position-absolute end-0" src="{% static 'img/logo2.png' %}" alt="ava" width="50" height="50">
     </a>
     <div class="col">
       <div class="row">
-        <span>{{ nickname }}</span>
+        <span>{{ nickname|default:"noname" }}</span>
       </div>
       <div class="row">
         <a class="col" href="#">settings</a>
