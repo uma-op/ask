@@ -24,8 +24,17 @@
           </form>
 
           {% block authorized %}
-            <a class="col-1" href="#">sign in</a>
-            <a class="col-1" href="#">sign up</a>
+          <div class="col">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <div class="row">
+                  <a class="col" href="#">sign in</a>
+                  <a class="col" href="#">sign up</a>
+                </div>
+              </div>
+            </div>
+          </div>
           {% endblock %}
           </div>
         </div>
@@ -33,7 +42,7 @@
     </header>
 
     <div class="container-fluid m-4">
-      <div class="row d-flex justify-content">
+      <div class="row">
         <div class="col-6">
           {% block content %}
           {% endblock %}
