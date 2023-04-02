@@ -4,7 +4,27 @@
         <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     </head>
     <body>
-        <p class="fst-italic">Hello with bootstrap</p>
+        <header class="p-3 mb-3 border-bottom">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="d-flex col-2 align-items-center justify-content-center">
+                        <img width="200" height="50" src="{% static 'img/logo.png' %}" alt="logo">
+                    </div>
+
+                    <form class="col-6 align-items-center">
+                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                    </form>
+
+                    <div class="col-1 align-items-center">
+                        <button type="button" class="btn btn-success px-5">ASK!</button>
+                    </div>
+
+                    <div class="col-3 align-items-center">
+                        {% block authorized %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </header>
+        <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     </body>
 </html>
-

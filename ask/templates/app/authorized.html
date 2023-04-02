@@ -1,0 +1,26 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block authorized %}
+<div class="row align-items-center">
+    <div class="d-flex col-6 align-items-center justify-content-center">
+        <img width="100" height="100" src="{% static 'img/ava.png' %}" alt="avatar"> 
+    </div>
+    <div class="col-6 align-items-center">
+        <div class="row">
+            <div class="col align-items-center">
+                <p>Nickname</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 align-items-center">
+                <a href="#">settings</a>
+            </div>
+            <div class="col-6 align-items-center">
+                <a href="#">log out</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
