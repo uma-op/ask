@@ -1,0 +1,52 @@
+{% extends "app/authorized.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row align-items-center">
+    <div class="col-3 align-items-center"> 
+        <h1>New Questions</h1>
+    </div>
+    <div class="col-9 align-items-center">
+        <a href="#">Hot Questions</a>
+    </div>
+</div>
+<div class="row w-75">
+    <div class="container border">
+        <div class="row">
+            <div class="col-2">
+                <div class="row my-2">
+                    <div class="col">
+                        <img width="50" height="50" src="{% static 'img/ava.png' %}" alt="avatar">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p> counter </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="row">
+                    <div class="col">
+                        <h4>How to build a moon park?</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Guys, I have trouble with a moon-park. Can't find the black-jack...</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href="#">answer(3)</a>
+                    </div>
+                    <div class="col">
+                        <p>Tags: <a href="#">black-jack</a> <a href="#">bender</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

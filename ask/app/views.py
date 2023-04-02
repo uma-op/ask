@@ -5,7 +5,7 @@ from django.template import loader
 # Create your views here.
 
 def index(request):
-    template = loader.get_template('app/authorized.html')
+    template = loader.get_template('app/new_questions.html')
     context = dict()
     return HttpResponse(template.render(context, request))
 

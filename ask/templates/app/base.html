@@ -20,11 +20,22 @@
                     </div>
 
                     <div class="col-3 align-items-center">
-                        {% block authorized %}{% endblock %}
+                        {% block user %}{% endblock %}
                     </div>
                 </div>
             </div>
         </header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8 px-5">
+                    {% block content %}{% endblock %}
+                </div>
+                <div class="col-4">
+                    {% block sidebar %}{% endblock %}
+                </div>
+            </div>
+        </div>
         <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     </body>
 </html>
+
