@@ -1,0 +1,46 @@
+{% extends "app/authorized.html" %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class="col-sm-3"></div>
+    <div class="col-sm">
+        <h1>New Question</h1>
+    </div>
+</div>
+  
+<form>
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="theme">Theme</label>
+        </div>
+        <div class="col-sm">
+            <input type="text" class="form-control" id="theme" placeholder="Theme of the question ...">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label" for="text">Text</label>
+        </div>
+        <div class="col-sm">
+            <textarea class="form-control" id="text" rows="20" placeholder="Your question ..."></textarea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="tags">Tags</label>
+        </div>
+        <div class="col-sm">
+            <input type="text" class="form-control" id="tags" placeholder="Tags of the question ...">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2">
+            <input type="submit" class="form-control btn btn-success" id="submit" value="ASK!">
+        </div>
+    </div>
+</form>
+{% endblock %}
