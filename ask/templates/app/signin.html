@@ -1,0 +1,46 @@
+{% extends "app/sidebar.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-sm-3"></div>
+        <div class="col-sm">
+            <h1>Log In</h1>
+        </div>
+    </div>
+  
+    <form>
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label class="form-label position-relative top-50 translate-middle-y" for="login">Login</label>
+            </div>
+            <div class="col-sm">
+                <input type="text" class="form-control" id="login">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3">
+                <label class="form-label position-relative top-50 translate-middle-y" for="password">Password</label>
+            </div>
+            <div class="col-sm">
+                <input type="password" class="form-control" id="password">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2">
+                <input type="submit" class="form-control btn btn-primary" id="submit" value="Log In">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-3"></div>
+            <div class="col-sm">
+                <a href="/signup">create new account</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

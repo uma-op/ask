@@ -20,7 +20,17 @@
                     </div>
 
                     <div class="col-3 align-items-center">
-                        {% block user %}{% endblock %}
+                        {% block user %}
+                        <div class="row">
+                            <div class="col-6"></div>
+                            <div class="col-3">
+                                <a href="#">log in</a>
+                            </div>
+                            <div class="col-3">
+                                <a href="#">log out</a>
+                            </div>
+                        </div>
+                        {% endblock %}
                     </div>
                 </div>
             </div>

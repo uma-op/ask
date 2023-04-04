@@ -16,3 +16,13 @@ def settings(request):
     context = dict()
     return HttpResponse(template.render(context, request))
 
+def signin(request):
+    template = loader.get_template('app/signin.html')
+    context = dict()
+    return HttpResponse(template.render(context, request))
+
+def signup(request):
+    template = loader.get_template('app/signup.html')
+    context = dict()
+    return HttpResponse(template.render(context, request))
+

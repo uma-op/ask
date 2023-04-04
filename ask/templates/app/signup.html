@@ -1,0 +1,73 @@
+{% extends "app/sidebar.html" %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class="col-sm-3"></div>
+    <div class="col-sm">
+        <h1>Registration</h1>
+    </div>
+</div>
+
+<form>
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="login">Login</label>
+        </div>
+        <div class="col-sm">
+            <input type="text" class="form-control" id="login">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="email">Email</label>
+        </div>
+        <div class="col-sm">
+            <input type="email" class="form-control" id="email">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="nickname">NickName</label>
+        </div>
+        <div class="col-sm">
+            <input type="text" class="form-control" id="nickname">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="password">Password</label>
+        </div>
+        <div class="col-sm">
+            <input type="password" class="form-control" id="password">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="repeat-password">Repeat password</label>
+        </div>
+        <div class="col-sm">
+            <input type="password" class="form-control" id="repeat-password">
+        </div>
+    </div>
+            
+    <div class="row mb-3 input-group">
+        <div class="col-sm-3">
+            <label class="form-label position-relative top-50 translate-middle-y" for="avatar">Avatar</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="file" class="form-control" id="avatar">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2">
+            <input type="submit" class="form-control btn btn-primary" id="submit" value="Register">
+        </div>
+    </div>
+</form>
+{% endblock %}
