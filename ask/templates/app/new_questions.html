@@ -10,18 +10,19 @@
         <a href="#">Hot Questions</a>
     </div>
 </div>
+{% for question in questions %}
 <div class="row">
     <div class="col m-2 border border-success">
         <div class="row">
             <div class="col-2">
                 <div class="row mt-3">
                     <div class="col d-flex justify-content-center">
-                        <img src="{% static "img/ava.png" %}" height="50" width="50">
+                        <img src="{% static question.avatar %}" height="50" width="50">
                     </div>
                 </div>
-                <div class="row border border-success mt-3 mx-3 py-1">
+                <div class="row border border-success bottom-0 mt-3 mx-3 py-1">
                     <div class="col-6 d-flex justify-content-center align-items-center">
-                        <span>10</span>
+                        <span>{{ question.mark }}</span>
                     </div>
                     <div class="col-6">
                         <div class="btn-group-vertical" role="group">
@@ -33,14 +34,52 @@
             </div>
             <div class="col">
                 <div class="row m-3">
-                    <a href="#" class="fs-4">theme</a>
+                    <a href="#" class="fs-4">{{ question.theme }}</a>
                 </div>
                 <div class="row m-3" style="height: 100px;">
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.t</span>
+                    <span>{{ question.preview_text }}</span>
+                </div>
+                <div class="row m-3">
+                    <div class="col">
+                        <span>answers({{ question.ans_count }})</span>
+                    </div>
+                    <div class="col">
+                        <span>Tags:
+                            {% for tag in question.tags %}
+                                {% if forloop.last %}
+                                    <a href="#">{{ tag }}</a>
+                                {% else %} 
+                                    <a href="#">{{ tag }}</a>, 
+                                {% endif %}
+                            {% empty %}
+                                no tags
+                            {% endfor %}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+{% endfor %}
+<div class="row">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination border-success">
+            <li class="page-item border border-success">
+                <a class="page-link link-success" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item border border-success"><a class="page-link link-success" href="#">1</a></li>
+            <li class="page-item border border-success"><a class="page-link link-success" href="#">2</a></li>
+            <li class="page-item border border-success"><a class="page-link link-success" href="#">3</a></li>
+            <li class="page-item border border-success">
+                <a class="page-link link-success" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 {% endblock %}
 
