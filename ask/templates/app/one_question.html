@@ -1,0 +1,97 @@
+{% extends "app/authorized.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-3">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <img src="{% static question.avatar %}" alt="" height="200" width="200">
+            </div>
+        </div>
+        <div class="row border border-success bottom-0 m-3 py-1">
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                <span>{{ question.mark }}</span>
+            </div>
+            <div class="col-6">
+                <div class="btn-group-vertical" role="group">
+                    <button type="button" class="btn btn-success btn-sm px-3">&#8657;</button>
+                    <button type="button" class="btn btn-success btn-sm px-3">&#8659;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="row m-3">
+            <a href="#" class="fs-4">{{ question.theme }}</a>
+        </div>
+        <div class="row m-3" style="height: 100px;">
+            <span>{{ question.text }}</span>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <span>Tags:
+                    {% for tag in question.tags %}
+                        {% if forloop.last %}
+                        <a href="#">{{ tag }}</a>
+                        {% else %} 
+                        <a href="#">{{ tag }}</a>, 
+                        {% endif %}
+                    {% empty %}
+                        no tags
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<hr align="center" size="2" color="#ff0000" />
+{% for answer in answers %}
+<div class="row">
+    <div class="col m-2 border border-success">
+        <div class="row">
+            <div class="col-2">
+                <div class="row mt-3">
+                    <div class="col d-flex justify-content-center">
+                        <img src="{% static answer.avatar %}" height="100" width="100">
+                    </div>
+                </div>
+                <div class="row border border-success bottom-0 m-3 py-1">
+                    <div class="col-6 d-flex justify-content-center align-items-center">
+                        <span>{{ answer.mark }}</span>
+                    </div>
+                    <div class="col-6">
+                        <div class="btn-group-vertical" role="group">
+                            <button type="button" class="btn btn-success btn-sm px-3">&#8657;</button>
+                            <button type="button" class="btn btn-success btn-sm px-3">&#8659;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row m-3">
+                    <span>{{ answer.text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<hr align="center" size="2" color="#ff0000" />
+<div class="row">
+    <form>
+        <div class="row mb-3">
+            <div class="col-sm">
+                <textarea class="form-control" id="text" rows="10" placeholder="Enter your answer here ..."></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-2">
+                <input type="submit" class="form-control btn btn-success" id="submit" value="ASK!">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

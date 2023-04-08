@@ -11,6 +11,13 @@ class Question:
         self.avatar = avatar
         self.mark =  mark
 
+class Answer:
+    def __init__(self, text, mark, is_correct, avatar) -> None:
+        self.text = text
+        self.mark = mark
+        self.is_correct = is_correct
+        self.avatar = avatar
+
 def index(request):
     template = loader.get_template('app/new_questions.html')
     context = {
@@ -87,6 +94,66 @@ def ask(request):
         ]
     }
     return HttpResponse(template.render(context, request))
+
+def question(request, question_id):
+    template = loader.get_template('app/one_question.html')
+    context = {
+        "question": Question(
+            "theme5",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            5,
+            ["tag_hueg"],
+            "img/ava.png",
+            16,
+        ),
+        "answers": [ 
+            Answer(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                1,
+                True,
+                "img/ava.png"
+            ),
+            Answer(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                2,
+                False,
+                "img/ava.png"
+            ),
+            Answer(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                3,
+                True,
+                "img/ava.png"
+            ),
+            Answer(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                4,
+                False,
+                "img/ava.png"
+            ),
+            Answer(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                5,
+                False,
+                "img/ava.png"
+            )
+        ],
+        "popular_tags": [
+            "tag1",
+            "tag2",
+            "tag3",
+            "tag4"
+        ],
+        "best_members": [
+            "best member 1",
+            "best member 2",
+            "best member 3"
+        ]
+
+    }
+
+    return HttpResponse(template.render(context, request))
+
 
 def tag(request, tag):
     template = loader.get_template('app/tag_questions.html')
