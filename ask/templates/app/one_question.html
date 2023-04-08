@@ -10,10 +10,10 @@
             </div>
         </div>
         <div class="row border border-success bottom-0 m-3 py-1">
-            <div class="col-6 d-flex justify-content-center align-items-center">
+            <div class="col-9 d-flex justify-content-center align-items-center">
                 <span>{{ question.mark }}</span>
             </div>
-            <div class="col-6">
+            <div class="col-3 d-flex justify-content-end">
                 <div class="btn-group-vertical" role="group">
                     <button type="button" class="btn btn-success btn-sm px-3">&#8657;</button>
                     <button type="button" class="btn btn-success btn-sm px-3">&#8659;</button>
@@ -25,7 +25,7 @@
         <div class="row m-3">
             <a href="#" class="fs-4">{{ question.theme }}</a>
         </div>
-        <div class="row m-3" style="height: 100px;">
+        <div class="row m-3">
             <span>{{ question.text }}</span>
         </div>
         <div class="row m-3">
@@ -50,17 +50,17 @@
 <div class="row">
     <div class="col m-2 border border-success">
         <div class="row">
-            <div class="col-2">
+            <div class="col-3">
                 <div class="row mt-3">
                     <div class="col d-flex justify-content-center">
                         <img src="{% static answer.avatar %}" height="100" width="100">
                     </div>
                 </div>
                 <div class="row border border-success bottom-0 m-3 py-1">
-                    <div class="col-6 d-flex justify-content-center align-items-center">
+                    <div class="col-9 d-flex justify-content-center align-items-center">
                         <span>{{ answer.mark }}</span>
                     </div>
-                    <div class="col-6">
+                    <div class="col-3 d-flex justify-content-end">
                         <div class="btn-group-vertical" role="group">
                             <button type="button" class="btn btn-success btn-sm px-3">&#8657;</button>
                             <button type="button" class="btn btn-success btn-sm px-3">&#8659;</button>
