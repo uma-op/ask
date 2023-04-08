@@ -1,7 +1,6 @@
-{% extends "app/authorized.html" %}
-{% load static %}
+{% extends "app/question_list.html" %}
 
-{% block content %}
+{% block header_content %}
 <div class="row align-items-center">
     <div class="col-3 align-items-center"> 
         <h1>New Questions</h1>
@@ -9,89 +8,6 @@
     <div class="col-9 align-items-center">
         <a href="#">Hot Questions</a>
     </div>
-</div>
-{% for question in page %}
-<div class="row">
-    <div class="col m-2 border border-success">
-        <div class="row">
-            <div class="col-3">
-                <div class="row mt-3">
-                    <div class="col d-flex justify-content-center">
-                        <img src="{% static question.avatar %}" height="100" width="100">
-                    </div>
-                </div>
-                <div class="row border border-success bottom-0 mt-3 mx-3 py-1">
-                    <div class="col-9 d-flex justify-content-center align-items-center">
-                        <span>{{ question.mark }}</span>
-                    </div>
-                    <div class="col-3 d-flex justify-content-center">
-                        <div class="btn-group-vertical" role="group">
-                            <button type="button" class="btn btn-success btn-sm px-3">&#8657;</button>
-                            <button type="button" class="btn btn-success btn-sm px-3">&#8659;</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="row m-3">
-                    <a href="#" class="fs-4">{{ question.theme }}</a>
-                </div>
-                <div class="row m-3" style="height: 100px;">
-                    <span>{{ question.preview_text }}</span>
-                </div>
-                <div class="row m-3">
-                    <div class="col">
-                        <span>answers({{ question.ans_count }})</span>
-                    </div>
-                    <div class="col">
-                        <span>Tags:
-                            {% for tag in question.tags %}
-                                {% if forloop.last %}
-                                    <a href="#">{{ tag }}</a>
-                                {% else %} 
-                                    <a href="#">{{ tag }}</a>, 
-                                {% endif %}
-                            {% empty %}
-                                no tags
-                            {% endfor %}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endfor %}
-<div class="row">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination border-success" style="--bs-pagination-active-bg: #146c43;--bs-pagination-active-border-color: green;">
-            {% if page.has_previous %}
-            <li class="page-item border border-success">
-                <a class="page-link link-success" href="?page=1">&laquo; first</a>
-            </li>
-            <li class="page-item border border-success">
-                <a class="page-link link-success" href="?page={{ page.previous_page_number }}">previous</a>
-            </li>
-            {% endif %}
-            {% for i in page_range %}
-                {% if page.number == i %}
-                <li class="page-item border border-success active"><a class="page-link link-success" href="#">{{ i }}</a></li>
-                {% elif i == page.paginator.ELLIPSIS %}
-                <li class="page-item border border-success"><a class="page-link link-success disabled" href="#">{{ i }}</a></li>
-                {% else %}
-                <li class="page-item border border-success"><a class="page-link link-success" href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-            {% endfor %}
-            {% if page.has_next %}
-            <li class="page-item border border-success">
-                <a class="page-link link-success" href="?page={{ page.next_page_number }}">next</a>
-            </li>
-            <li class="page-item border border-success">
-                <a class="page-link link-success" href="?page={{ page.paginator.num_pages }}">last &raquo;</a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
 </div>
 {% endblock %}
 

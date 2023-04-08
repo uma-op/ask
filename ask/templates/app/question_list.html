@@ -1,0 +1,59 @@
+{% extends "app/paginator.html" %}
+{% load static %}
+
+{% block paginated_content %}
+{% block header_content %}{% endblock %}
+{% for question in page %}
+<div class="row">
+    <div class="col m-2 border border-success">
+        <div class="row">
+            <div class="col-3">
+                <div class="row mt-3">
+                    <div class="col d-flex justify-content-center">
+                        <img src="{% static question.avatar %}" height="100" width="100">
+                    </div>
+                </div>
+                <div class="row border border-success bottom-0 mt-3 mx-3 py-1">
+                    <div class="col-9 d-flex justify-content-center align-items-center">
+                        <span>{{ question.mark }}</span>
+                    </div>
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="btn-group-vertical" role="group">
+                            <button type="button" class="btn btn-success btn-sm px-3">&#8657;</button>
+                            <button type="button" class="btn btn-success btn-sm px-3">&#8659;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row m-3">
+                    <a href="#" class="fs-4">{{ question.theme }}</a>
+                </div>
+                <div class="row m-3" style="height: 100px;">
+                    <span>{{ question.preview_text }}</span>
+                </div>
+                <div class="row m-3">
+                    <div class="col">
+                        <span>answers({{ question.ans_count }})</span>
+                    </div>
+                    <div class="col">
+                        <span>Tags:
+                            {% for tag in question.tags %}
+                                {% if forloop.last %}
+                                    <a href="#">{{ tag }}</a>
+                                {% else %} 
+                                    <a href="#">{{ tag }}</a>, 
+                                {% endif %}
+                            {% empty %}
+                                no tags
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+
