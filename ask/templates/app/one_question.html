@@ -23,7 +23,7 @@
     </div>
     <div class="col-9">
         <div class="row m-3">
-            <a href="#" class="fs-4">{{ question.theme }}</a>
+            <span class="fs-4">{{ question.theme }}</span>
         </div>
         <div class="row m-3">
             <span>{{ question.text }}</span>
@@ -33,9 +33,9 @@
                 <span>Tags:
                     {% for tag in question.tags %}
                         {% if forloop.last %}
-                        <a href="#">{{ tag }}</a>
+                        <a href="{% url 'tag' tag %}">{{ tag }}</a>
                         {% else %} 
-                        <a href="#">{{ tag }}</a>, 
+                        <a href="{% url 'tag' tag %}">{{ tag }}</a>, 
                         {% endif %}
                     {% empty %}
                         no tags

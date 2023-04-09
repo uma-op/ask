@@ -8,7 +8,7 @@
     <div class="row">
         <p>
             {% for pt in popular_tags %}
-            <a href="#">{{ pt }}</a>
+            <a href="{% url 'tag' pt %}">{{ pt }}</a>
             {% endfor %}
         </p>
     </div>
