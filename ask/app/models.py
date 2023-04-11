@@ -1,8 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Profile(models.Model):
-    # id =
-    user = models.BigIntegerField()  # OneToOne to django user
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        primary_key=False
+    )
+
     login = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     nickname = models.CharField(max_length=255)
@@ -27,6 +32,10 @@ class Question(models.Model):
     tags = models.ManyToManyField(Tag)
 
 class Answer(models.Model):
+    profile = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE
+    )
     question = models.ForeignKey(
         Question,
         on_delete=models.CASCADE
