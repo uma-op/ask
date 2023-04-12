@@ -18,6 +18,17 @@ class Tag(models.Model):
     name = models.CharField(max_length=255)
     popularity = models.BigIntegerField()
 
+class QuestionManager(models.Manager):
+    def get_most_by_popularity(self, quantity):
+        return self.order_by("-marks")[:quantity]
+
+    def get_by_tag_name(self, name):
+        return self.filter(tags__name=name)
+
+    def get_by_id(self, id):
+        return self.get(id=id)
+
+
 class Question(models.Model):
     profile = models.ForeignKey(
         Profile,
@@ -25,11 +36,17 @@ class Question(models.Model):
     )
 
     theme = models.CharField(max_length=255)
-    preview_text = models.CharField(max_length=2048)
     text = models.TextField()
+    answers = models.BigIntegerField()
     marks = models.BigIntegerField()
 
     tags = models.ManyToManyField(Tag)
+
+    objects = QuestionManager()
+
+class AnswerManager(models.Manager):
+    def get_by_question_id(self, id):
+        return self.filter(question__id=id)
 
 class Answer(models.Model):
     profile = models.ForeignKey(
@@ -45,6 +62,8 @@ class Answer(models.Model):
     is_correct = models.BooleanField()
     marks = models.BigIntegerField()
 
+    objects = AnswerManager()
+
 class AnswerMark(models.Model):
     profile = models.ForeignKey(
         Profile,
@@ -56,6 +75,8 @@ class AnswerMark(models.Model):
         on_delete=models.CASCADE
     )
 
+    is_like = models.BooleanField()
+
 class QuestionMark(models.Model):
     profile = models.ForeignKey(
         Profile,
@@ -66,4 +87,6 @@ class QuestionMark(models.Model):
         Question,
         on_delete=models.CASCADE
     )
+
+    is_like = models.BooleanField()
 

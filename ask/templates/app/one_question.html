@@ -6,12 +6,12 @@
     <div class="col-3">
         <div class="row">
             <div class="col d-flex justify-content-center">
-                <img src="{% static question.avatar %}" alt="" height="200" width="200">
+                <img src="{% static question.profile.avatar %}" alt="" height="200" width="200">
             </div>
         </div>
         <div class="row border border-success bottom-0 m-3 py-1">
             <div class="col-9 d-flex justify-content-center align-items-center">
-                <span>{{ question.mark }}</span>
+                <span>{{ question.marks }}</span>
             </div>
             <div class="col-3 d-flex justify-content-end">
                 <div class="btn-group-vertical" role="group">
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="row m-3">
+        <div class="row m-3 text-break">
             <span class="fs-4">{{ question.theme }}</span>
         </div>
         <div class="row m-3">
@@ -31,11 +31,11 @@
         <div class="row m-3">
             <div class="col">
                 <span>Tags:
-                    {% for tag in question.tags %}
+                    {% for tag in question.tags.all %}
                         {% if forloop.last %}
-                        <a href="{% url 'tag' tag %}">{{ tag }}</a>
+                        <a href="{% url 'tag' tag.name %}">{{ tag.name }}</a>
                         {% else %} 
-                        <a href="{% url 'tag' tag %}">{{ tag }}</a>, 
+                        <a href="{% url 'tag' tag.name %}">{{ tag.name }}</a>, 
                         {% endif %}
                     {% empty %}
                         no tags
@@ -53,12 +53,12 @@
             <div class="col-3">
                 <div class="row mt-3">
                     <div class="col d-flex justify-content-center">
-                        <img src="{% static answer.avatar %}" height="100" width="100">
+                        <img src="{% static answer.profile.avatar %}" height="100" width="100">
                     </div>
                 </div>
                 <div class="row border border-success bottom-0 m-3 py-1">
                     <div class="col-9 d-flex justify-content-center align-items-center">
-                        <span>{{ answer.mark }}</span>
+                        <span>{{ answer.marks }}</span>
                     </div>
                     <div class="col-3 d-flex justify-content-end">
                         <div class="btn-group-vertical" role="group">

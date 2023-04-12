@@ -8,7 +8,7 @@
     <div class="row">
         <p>
             {% for pt in popular_tags %}
-            <a href="{% url 'tag' pt %}">{{ pt }}</a>
+            <a href="{% url 'tag' pt.name %}">{{ pt.name }}</a>
             {% endfor %}
         </p>
     </div>
@@ -17,10 +17,10 @@
     <div class="row">
         <h3>Best Members</h3>
     </div>
-    <div class="row">
+    <div class="row text-break">
         <ul>
             {% for bm in best_members %}
-            <li>{{ bm }}</li>
+            <li>{{ bm.nickname }}</li>
             {% endfor %}
         </ul>
     </div>
