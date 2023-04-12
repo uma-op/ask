@@ -87,7 +87,7 @@ class Command(BaseCommand):
                     profile = random.choice(profiles),
                     question = q,
                     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris justo risus, pulvinar vel blandit sed, pharetra sit amet urna. Nunc molestie lacus nec lorem sagittis, ut ullamcorper dolor luctus. Donec facilisis turpis eu quam interdum varius. Fusce eu sodales metus. Maecenas ultrices nibh pellentesque nulla luctus, ut cursus turpis suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam gravida feugiat augue et sagittis.",
-                    is_correct = False,
+                    is_correct = random.randint(0, 1),
                     marks = 0
                 )
             )

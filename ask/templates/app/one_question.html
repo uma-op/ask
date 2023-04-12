@@ -72,6 +72,11 @@
                 <div class="row m-3">
                     <span>{{ answer.text }}</span>
                 </div>
+                {% if answer.is_correct %}
+                <div class="row m-3">
+                    <span>correct!!!</span>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
