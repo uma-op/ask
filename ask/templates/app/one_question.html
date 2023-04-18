@@ -1,4 +1,4 @@
-{% extends "app/authorized.html" %}
+{% extends "app/base.html" %}
 {% load static %}
 
 {% block content %}
@@ -6,7 +6,7 @@
     <div class="col-3">
         <div class="row">
             <div class="col d-flex justify-content-center">
-                <img src="{% static question.profile.avatar %}" alt="" height="200" width="200">
+                <img src="{% static 'img/ava.png' %}" alt="" height="200" width="200">
             </div>
         </div>
         <div class="row border border-success bottom-0 m-3 py-1">
@@ -53,7 +53,7 @@
             <div class="col-3">
                 <div class="row mt-3">
                     <div class="col d-flex justify-content-center">
-                        <img src="{% static answer.profile.avatar %}" height="100" width="100">
+                        <img src="{% static 'img/ava.png' %}" height="100" width="100">
                     </div>
                 </div>
                 <div class="row border border-success bottom-0 m-3 py-1">
@@ -86,7 +86,36 @@
 </div>
 {% endfor %}
 <hr align="center" size="2" color="#ff0000" />
+
+{% if request.user.is_authenticated %}
+
+{% load django_bootstrap5 %}
+
 <div class="row">
+    <form method="post">
+        {% csrf_token %}
+    
+        <div class="row mb-3">
+            <div class="col-sm-2">
+                {% bootstrap_form_errors form %}
+            </div>
+        </div>
+    
+        {% for field in form %}
+        {% bootstrap_field field layout="horizontal" wrapper_class="row mb-3" %}
+        {% endfor %}
+        
+        <div class="row mb-3">
+            <div class="col-sm-2">
+                {% bootstrap_button "Answer" button_type="submit" button_class="btn btn-success" %}
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endif %}
+
+{% comment %}
     <form>
         <div class="row mb-3">
             <div class="col-sm">
@@ -101,5 +130,7 @@
         </div>
     </form>
 </div>
+{% endcomment %}
+
 {% endblock %}
 

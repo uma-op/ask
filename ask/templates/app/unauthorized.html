@@ -1,14 +1,10 @@
-{% extends "app/base.html" %}
-
-{% block user %}
 <div class="row">
     <div class="col-6"></div>
     <div class="col-3">
-        <a href="/signin">log in</a>
+        <a href="{% url 'signin' %}?next={{ request.path }}">log in</a>
     </div>
     <div class="col-3">
-        <a href="/signup">register</a>
+        <a href="{% url 'signup' %}">register</a>
     </div>
 </div>
-{% endblock %}
 

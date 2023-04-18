@@ -26,21 +26,15 @@
                     </form>
 
                     <div class="col-1 align-items-center">
-                        <button type="button" class="btn btn-success px-5">ASK!</button>
+                        <a class="btn btn-success px-5" href="{% url 'ask' %}">ASK!</a>
                     </div>
 
                     <div class="col-3 align-items-center">
-                        {% block user %}
-                        <div class="row">
-                            <div class="col-6"></div>
-                            <div class="col-3">
-                                <a href="{% url 'signin' %}">log in</a>
-                            </div>
-                            <div class="col-3">
-                                <a href="{% url 'signup' %}">register</a>
-                            </div>
-                        </div>
-                        {% endblock %}
+                        {% if user %}
+                        {% include "app/authorized.html" %}
+                        {% else %}
+                        {% include "app/unauthorized.html" %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -51,7 +45,7 @@
                     {% block content %}{% endblock %}
                 </div>
                 <div class="col-4">
-                    {% block sidebar %}{% endblock %}
+                    {% include "app/sidebar.html" %}
                 </div>
             </div>
         </div>

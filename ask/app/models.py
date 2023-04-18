@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class ProfileManager(models.Manager):
+    def get_by_id(self, id):
+        return self.get(id=id)
+
+    def get_by_user(self, user):
+        return self.get(user=user)
+
 class Profile(models.Model):
     user = models.OneToOneField(
         User,
@@ -11,12 +18,26 @@ class Profile(models.Model):
     login = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     nickname = models.CharField(max_length=255)
-    avatar = models.CharField(max_length=255)
+    avatar = models.FileField(upload_to="uploads/")
     popularity = models.BigIntegerField()
+
+    objects = ProfileManager()
+
+class TagManager(models.Manager):
+    def get_most_by_popularity(self, quntity):
+        return self.order_by("-popularity")[:quntity]
+
+    def get_by_name(self, name):
+        return self.get(name=name)
+
+    def get_by_id(self, id):
+        return self.get(id=id)
 
 class Tag(models.Model):
     name = models.CharField(max_length=255)
-    popularity = models.BigIntegerField()
+    popularity = models.BigIntegerField(default=0)
+
+    objects = TagManager();
 
 class QuestionManager(models.Manager):
     def get_most_by_popularity(self, quantity):
@@ -53,6 +74,7 @@ class Answer(models.Model):
         Profile,
         on_delete=models.CASCADE
     )
+
     question = models.ForeignKey(
         Question,
         on_delete=models.CASCADE

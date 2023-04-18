@@ -1,4 +1,4 @@
-{% extends "app/sidebar.html" %}
+{% extends "app/base.html" %}
 
 {% block content %}
 <div class="row mb-3">
@@ -15,6 +15,38 @@
     </div>
 </div>
 
+{% load django_bootstrap5 %}
+
+<form action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+
+    <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <div class="col-sm">
+            {% bootstrap_form_errors form %}
+        </div>
+    </div>
+
+    {% for field in form %}
+    {% bootstrap_field field layout="horizontal" wrapper_class="row mb-3" placeholder="" %}
+    {% endfor %}
+    
+    <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <div class="col-sm">
+            {% bootstrap_button "Register" button_type="submit" %}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <div class="col-sm">
+            <a href="{% url 'signin' %}">already have an account?</a>
+        </div>
+    </div>
+</form>
+
+{% comment %}
 <form>
     <div class="row mb-3">
         <div class="col-sm-2">
@@ -77,4 +109,5 @@
         </div>
     </div>
 </form>
+{% endcomment %}
 {% endblock %}

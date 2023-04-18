@@ -1,4 +1,4 @@
-{% extends "app/authorized.html" %}
+{% extends "app/base.html" %}
 
 {% block content %}
 <div class="row mb-3">
@@ -7,7 +7,31 @@
         <h1>New Question</h1>
     </div>
 </div>
-  
+
+{% load django_bootstrap5 %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <div class="col-sm">
+            {% bootstrap_form_errors form %}
+        </div>
+    </div>
+
+    {% for field in form %}
+    {% bootstrap_field field layout="horizontal" wrapper_class="row mb-3" placeholder="" %}
+    {% endfor %}
+    
+    <div class="row mb-3">
+        <div class="col-sm-2"></div>
+        <div class="col-sm">
+            {% bootstrap_button "ASK!" button_type="submit" %}
+        </div>
+    </div>
+</form> 
+{% comment %}
 <form>
     <div class="row mb-3">
         <div class="col-sm-2">
@@ -43,4 +67,5 @@
         </div>
     </div>
 </form>
+{% endcomment %}
 {% endblock %}
